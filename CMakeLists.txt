@@ -2,6 +2,13 @@ cmake_minimum_required(VERSION 3.11)
 project(zvulkan)
 
 set(ZVULKAN_SOURCES
+	src/gpubindgroup.cpp
+	src/gpubuffer.cpp
+	src/gpucommands.cpp
+	src/gpudevice.cpp
+	src/gpupipeline.cpp
+	src/gputexture.cpp
+	src/gpuqueryset.cpp
 	src/vulkanbuilders.cpp
 	src/vulkandevice.cpp
 	src/vulkaninstance.cpp
@@ -116,6 +123,14 @@ set(ZVULKAN_SOURCES
 )
 
 set(ZVULKAN_INCLUDES
+	include/zvulkan/gpubindgroup.h
+	include/zvulkan/gpubuffer.h
+	include/zvulkan/gpucommands.h
+	include/zvulkan/gpudevice.h
+	include/zvulkan/gpupipeline.h
+	include/zvulkan/gputexture.h
+	include/zvulkan/gpuqueryset.h
+	include/zvulkan/gpuformat.h
 	include/zvulkan/vulkanbuilders.h
 	include/zvulkan/vulkancompatibledevice.h
 	include/zvulkan/vulkandevice.h
