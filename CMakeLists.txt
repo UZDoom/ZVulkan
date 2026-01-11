@@ -190,8 +190,6 @@ source_group("example" REGULAR_EXPRESSION "${CMAKE_CURRENT_SOURCE_DIR}/example/.
 
 include_directories(include include/zvulkan src)
 
-
-
 if(WIN32)
 	list(APPEND ZVULKAN_SOURCES ${ZVULKAN_WIN32_SOURCES})
 	add_definitions(-DUNICODE -D_UNICODE)
@@ -222,9 +220,12 @@ add_library(zvulkan STATIC ${ZVULKAN_SOURCES} ${ZVULKAN_INCLUDES} ${VULKAN_INCLU
 target_link_libraries(zvulkan PUBLIC ${ZVULKAN_LIBS})
 set_target_properties(zvulkan PROPERTIES CXX_STANDARD 17)
 
-add_executable(zvulkan_example WIN32 MACOSX_BUNDLE ${EXAMPLE_SOURCES})
-target_link_libraries(zvulkan_example zvulkan)
-set_target_properties(zvulkan_example PROPERTIES CXX_STANDARD 17)
+option( BUILD_EXAMPLE "Build exmaple" OFF )
+if(BUILD_EXAMPLE)
+	add_executable(zvulkan_example WIN32 MACOSX_BUNDLE ${EXAMPLE_SOURCES})
+	target_link_libraries(zvulkan_example zvulkan)
+	set_target_properties(zvulkan_example PROPERTIES CXX_STANDARD 17)
+endif()
 
 if(MSVC)
 	set_property(TARGET zvulkan PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
